@@ -8,8 +8,11 @@ COPY requirements.txt requirements.txt
 
 RUN pip3 install -r requirements.txt
 
-COPY app.py .
-COPY run.py .
+# COPY app.py .
+# COPY run.py .
+ADD . /app
 
-EXPOSE 80
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=80"]
+
+# CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=80"]
+CMD ["python", "app.py"]
+EXPOSE 4000
