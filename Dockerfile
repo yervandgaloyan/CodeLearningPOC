@@ -1,18 +1,11 @@
-# syntax=docker/dockerfile:1
-
 FROM python:3.8-buster
 
-WORKDIR /app
+WORKDIR /opt/app
 
-COPY requirements.txt requirements.txt
+COPY . .
 
-RUN pip3 install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# COPY app.py .
-# COPY run.py .
-ADD . /app
+EXPOSE 5000
 
-
-# CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=80"]
-CMD ["python", "app.py"]
-EXPOSE 4000
+CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
